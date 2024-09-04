@@ -26,4 +26,9 @@ class TextNode:
             )
 
     def __repr__(self):
-        return f'{{"name": TextNode, "text": {self.text}, "text_type": {self.text_type.value}, "url": {self.url}}}'
+        return json.dumps({
+            "name": "TextNode",
+            "text": self.text,
+            "text_type": self.text_type.value,
+            "url": self.url
+        })
