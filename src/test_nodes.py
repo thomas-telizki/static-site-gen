@@ -3,6 +3,7 @@ import unittest
 import json
 from textnode import *
 from htmlnode import *
+from leafnode import *
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
@@ -88,6 +89,13 @@ class TestTextNode(unittest.TestCase):
             }, json.loads(repr(node))
         )
 
+    def test_to_html_no_children(self):
+        node = LeafNode("Hello, world!", "p")
+        self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
+
+    def test_to_html_no_tag(self):
+        node = LeafNode("Hello, world!", None)
+        self.assertEqual(node.to_html(), "Hello, world!")
 
 if __name__ == "__main__":
     unittest.main()
